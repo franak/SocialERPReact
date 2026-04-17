@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const path = require('path');
 
 const config = require('./config');
 const logRequest = require('./middleware/logRequest');
@@ -16,6 +17,10 @@ const app = express();
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Servir archivos estáticos del frontend compilado
+const frontendPath = path.join(__dirname, '../../frontend/build');
+app.use(express.static(frontendPath));
 
 // Conectar a MongoDB
 mongoose
@@ -52,15 +57,21 @@ app.use((err, req, res, next) => {
     });
 });
 
-// 404
-app.use((req, res) => {
-    res.status(404).json({
-        status: 'KO',
-        message: 'Ruta no encontrada',
+// Servir index.html para rutas del frontend (React Router)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'), (err) => {
+        if (err) {
+            res.status(404).json({
+                status: 'KO',
+                message: 'Ruta no encontrada',
+            });
+        }
     });
 });
 
 const PORT = config.port;
 app.listen(PORT, () => {
-    console.log(`✓ Backend escuchando en puerto ${PORT}`);
+    console.log(`✓ Servidor escuchando en puerto ${PORT}`);
+    console.log(`✓ Frontend: http://localhost:${PORT}`);
+    console.log(`✓ API: http://localhost:${PORT}/api`);
 });
