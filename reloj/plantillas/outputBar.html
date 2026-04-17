@@ -1,0 +1,29 @@
+<style>
+  .dropdown-toggle::after {
+
+    visibility: hidden;
+  }
+</style>
+<md-toolbar class="SERP_Cabecera">
+  <div class="md-toolbar-tools" layout-xs="100">
+    <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true" style="position: relative;bottom: 10%;">
+      <!-- <i class="material-icons">fingerprint</i> -->
+      <md-icon md-font-library="material-icons" ng-bind="$parent.icono" class="SERP_IconosCabecera"
+        style="font-size:30px !important;margin-left:1%"></md-icon>
+    </md-button>
+
+    <h2 class="SERP_IconosCabecera" flex layout-xs="70">
+      <small ng-bind="$parent.textoCabecera"> </small>
+    </h2>
+
+    <div layout="row" style="">
+      <md-button class="md-icon-button" ng-click="goHome()" style="position: relative;bottom: 10%;"><i
+          class="material-icons SERP_IconosCabecera" style="font-size:30px !important;margin-left:1%">home</i>
+      </md-button>
+      <md-button ng-hide="nombreProceso=='Configuracion'" class="md-icon-button" aria-label="More">
+        <md-icon md-font-library="material-icons" class="SERP_IconosCabecera" ng-click="showGridBottomSheet()"
+          class="md-light md-48">more_vert</md-icon>
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>

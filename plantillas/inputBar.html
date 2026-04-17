@@ -1,0 +1,24 @@
+<md-content layout-padding ng-controller="InputBarController">
+    <div layout-gt-xs="row">
+        <md-button flex="20" style="min-width: 35px;" id="flechaInicial" ng-click="$parent.bDesplazamiento('primero');">
+            <i class="material-icons">first_page</i>
+        </md-button>
+        <md-button flex="20" style="min-width: 35px;" id="flechaIzquierda"
+            ng-click="$parent.bDesplazamiento('anterior');">
+            <i class="material-icons">arrow_back</i>
+        </md-button>
+        <md-button flex="20" style="min-width: 35px;" id="flechaDerecha"
+            ng-click="$parent.bDesplazamiento('siguiente');">
+            <i class="material-icons">arrow_forward</i>
+        </md-button>
+        <md-button flex="20" style="min-width: 35px;" id="flechaFinal" ng-click="$parent.bDesplazamiento('ultimo');">
+            <i class="material-icons">last_page</i>
+        </md-button>
+        <md-button flex="20" style="min-width: 35px;" ng-click="cerrarInput()">
+            <i class="material-icons">highlight_off</i>
+        </md-button>
+        <md-button flex="20" style="min-width: 35px;" ng-click="submit()">
+            <i class="material-icons">check</i>
+        </md-button>
+    </div>
+</md-content>

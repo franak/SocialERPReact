@@ -1,0 +1,326 @@
+/**
+ * NominasPage - Nómina list view with filters and PDF viewer
+ */
+
+.nominas-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nominas-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  padding: var(--spacing-xl);
+  background-color: var(--surface);
+}
+
+.nominas-card {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+}
+
+.nominas-card.loading {
+  opacity: 0.6;
+}
+
+/* ===== HEADER ===== */
+
+.nominas-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.nominas-title {
+  font-family: var(--font-display);
+  font-size: var(--headline-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.nominas-subtitle {
+  font-size: var(--body-md);
+  color: var(--on-surface-variant);
+}
+
+/* ===== FILTERS ===== */
+
+.nominas-filters {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background-color: var(--surface-container-high);
+  border-radius: var(--radius-md);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.filter-group label {
+  font-weight: var(--weight-medium);
+  color: var(--on-surface);
+}
+
+.filter-group select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-size: var(--body-md);
+  cursor: pointer;
+}
+
+.filter-group select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* ===== LOADING ===== */
+
+.nominas-card .loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  z-index: 10;
+}
+
+.nominas-card .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--surface-container-high);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nominas-card .loading-text {
+  margin-top: var(--spacing-md);
+  color: var(--on-surface-variant);
+}
+
+/* ===== EMPTY STATE ===== */
+
+.nominas-card .empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.nominas-card .empty-message {
+  color: var(--on-surface-variant);
+  font-size: var(--body-lg);
+}
+
+/* ===== TABLE ===== */
+
+.nominas-list {
+  overflow-x: auto;
+}
+
+.nominas-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-md);
+}
+
+.nominas-table thead {
+  background-color: var(--surface-container-high);
+}
+
+.nominas-table th {
+  padding: var(--spacing-md);
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  border-bottom: 2px solid var(--outline-variant);
+}
+
+.nominas-table td {
+  padding: var(--spacing-md);
+  color: var(--on-surface);
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.nominas-table tbody tr:hover {
+  background-color: var(--surface-container-high);
+}
+
+.nominas-table .documento-cell {
+  font-weight: var(--weight-medium);
+}
+
+.nominas-table .anio-cell {
+  font-weight: var(--weight-medium);
+  text-align: center;
+}
+
+.nominas-table .mes-cell {
+  color: var(--on-surface);
+  font-weight: var(--weight-medium);
+}
+
+.nominas-table .periodo-cell {
+  color: var(--on-surface-variant);
+}
+
+.nominas-table .fecha-pago-cell {
+  font-weight: var(--weight-medium);
+  color: var(--primary);
+}
+
+.nominas-table .actions-cell {
+  text-align: center;
+  width: 60px;
+}
+
+/* ===== DOWNLOAD BUTTON ===== */
+
+.download-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--body-lg);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s;
+}
+
+.download-btn:hover {
+  background-color: var(--surface-container-high);
+}
+
+/* ===== PDF MODAL ===== */
+
+.pdf-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pdf-modal-content {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 800px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pdf-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--outline-variant);
+  background-color: var(--surface-container-high);
+}
+
+.pdf-modal-header h2 {
+  margin: 0;
+  font-size: var(--title-md);
+  color: var(--on-surface);
+}
+
+.pdf-modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.pdf-modal-actions .btn-download {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: var(--weight-medium);
+}
+
+.pdf-modal-actions .btn-download:hover {
+  background-color: var(--primary-container);
+}
+
+.pdf-modal-actions .btn-close {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.pdf-modal-actions .btn-close:hover {
+  background-color: var(--surface-container-low);
+}
+
+.pdf-viewer {
+  flex: 1;
+  overflow: hidden;
+}
+
+.pdf-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  .nominas-container {
+    padding: var(--spacing-md);
+  }
+
+  .nominas-card {
+    padding: var(--spacing-lg);
+  }
+
+  .nominas-filters {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .nominas-table th,
+  .nominas-table td {
+    padding: var(--spacing-sm);
+    font-size: var(--body-sm);
+  }
+
+  .pdf-modal-content {
+    width: 95%;
+    height: 80vh;
+  }
+}

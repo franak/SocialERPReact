@@ -1,0 +1,266 @@
+/**
+ * AdminCalendariosPage - Admin view of all employee calendars
+ */
+
+.admin-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-container {
+  flex: 1;
+  padding: var(--spacing-xl);
+  background-color: var(--surface);
+  display: flex;
+  justify-content: center;
+}
+
+.admin-card {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.admin-header h1 {
+  font-family: var(--font-display);
+  font-size: var(--headline-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  margin: 0;
+}
+
+/* ===== FILTERS ===== */
+
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.filter-group label {
+  font-family: var(--font-body);
+  font-size: var(--label-sm);
+  color: var(--on-surface-variant);
+  font-weight: var(--weight-semibold);
+}
+
+.filter-group input,
+.filter-group select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--surface-container-highest);
+  border: none;
+  border-bottom: 2px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  min-width: 180px;
+  transition: border-color var(--transition-base);
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+
+.btn-refresh {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--gradient-primary);
+  color: var(--surface-container-lowest);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 40px;
+  align-self: flex-end;
+}
+
+.btn-refresh:hover {
+  box-shadow: var(--shadow-level-2);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== ALERTS ===== */
+
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+}
+
+.alert-error {
+  background-color: var(--color-error-container);
+  color: var(--color-error);
+}
+
+/* ===== EVENTS TABLE ===== */
+
+.events-table-container {
+  overflow-x: auto;
+}
+
+.empty-list {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--on-surface-variant);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+}
+
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+}
+
+.events-table thead {
+  background-color: var(--surface-container-highest);
+}
+
+.events-table th {
+  padding: var(--spacing-md);
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  text-transform: uppercase;
+  font-size: var(--label-sm);
+  letter-spacing: 0.05em;
+}
+
+.events-table td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+}
+
+.employee-code {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+}
+
+.description-cell {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Event badges */
+.event-badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--body-sm);
+  font-weight: var(--weight-medium);
+}
+
+.event-vacaciones {
+  background-color: #4caf50;
+  color: white;
+}
+
+.event-baja-laboral {
+  background-color: #f44336;
+  color: white;
+}
+
+.event-ausencia {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Status badges */
+.status-badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--body-sm);
+  font-weight: var(--weight-medium);
+}
+
+.status-pendiente {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.status-en-curso {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.status-procesada {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
+.status-no-procesable,
+.status-rechazada {
+  background-color: #ffebee;
+  color: #b71c1c;
+}
+
+.status-incompleta {
+  background-color: #f5f5f5;
+  color: #616161;
+}
+
+/* ===== RESULTS COUNT ===== */
+
+.results-count {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  color: var(--on-surface-variant);
+}
+
+/* ===== LOADING STATE ===== */
+
+.admin-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .admin-card {
+    padding: var(--spacing-lg);
+  }
+
+  .admin-filters {
+    flex-direction: column;
+  }
+
+  .filter-group input,
+  .filter-group select {
+    min-width: 100%;
+  }
+}

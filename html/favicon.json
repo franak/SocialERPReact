@@ -1,0 +1,40 @@
+{
+	"favicon_generation":
+{
+    "api_key": "d6baf18e04612dc9d9f0d38e7167540976267784",
+    "master_picture": {
+        "type": "inline",
+        "content": ""
+    },
+    "files_location": {
+        "type": "path",
+        "path": "favicons/"
+    },
+    "favicon_design": {
+        "ios": {
+            "picture_aspect": "background_and_margin",
+            "margin": "4",
+            "background_color": "#123456"
+        },
+        "windows": {
+            "picture_aspect": "white_silhouette",
+            "background_color": "#654321"
+        },
+        "firefox_app": {
+            "picture_aspect": "circle",
+            "keep_picture_in_circle": "true",
+            "circle_inner_margin": "5",
+            "background_color": "#456789",
+            "app_name": "SocialERP",
+            "app_description": "Tienda Web y ERP en la nube",
+            "developer_name": "Philippe Bernard",
+            "developer_url": "https://telegestion.com"
+        }
+    },
+    "settings": {
+        "compression": 5,
+        "scaling_algorithm": "NearestNeighbor",
+      "html_code_file":true
+    }
+}
+}

@@ -1,0 +1,110 @@
+/**
+ * LoginPage - "Architectural Precision" Aesthetic
+ */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+  background-color: var(--surface);
+}
+
+.login-card {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  max-width: 420px;
+  width: 100%;
+}
+
+.login-card h1 {
+  font-family: var(--font-display);
+  font-size: var(--headline-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  letter-spacing: -0.02em;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--on-surface-variant);
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--label-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--surface-container-highest);
+  border: none;
+  border-bottom: 2px solid var(--outline-variant);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  transition: border-color var(--transition-base);
+}
+
+.form-group input::placeholder {
+  color: var(--outline-variant);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+
+.btn-login {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--gradient-primary);
+  color: var(--surface-container-lowest);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 48px;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-level-2);
+}
+
+.btn-login:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  font-size: var(--label-md);
+  color: var(--on-surface-variant);
+  font-family: var(--font-body);
+}
+
+.login-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

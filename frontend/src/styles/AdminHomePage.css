@@ -1,0 +1,109 @@
+/**
+ * AdminHomePage - Admin section selector
+ */
+
+.admin-home-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: var(--spacing-xl);
+  background-color: var(--surface);
+}
+
+.admin-home-card {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  max-width: 600px;
+  width: 100%;
+}
+
+.admin-home-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.admin-home-header h1 {
+  font-family: var(--font-heading);
+  font-size: var(--headline-lg);
+  font-weight: var(--weight-bold);
+  color: var(--on-surface);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.admin-home-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.admin-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.admin-section-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: left;
+}
+
+.admin-section-card:hover {
+  background-color: var(--surface-container-high);
+  border-color: var(--color-primary);
+}
+
+.admin-section-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.admin-section-info {
+  flex: 1;
+}
+
+.admin-section-name {
+  font-family: var(--font-body);
+  font-size: var(--body-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.admin-section-description {
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .admin-home-container {
+    padding: var(--spacing-md);
+  }
+
+  .admin-home-card {
+    padding: var(--spacing-xl);
+  }
+
+  .admin-section-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

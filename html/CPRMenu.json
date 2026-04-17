@@ -1,0 +1,32 @@
+[
+    {
+        "PrimerNivel": "Registro de Jornada",
+        "SegundoNivel": [
+            {
+                "Nombre": "Accesos",
+                "Enlaces": [
+                    {
+                        "Nombre": "Relog",
+                        "ID": "Accesos_Relog",
+                        "Color": 2263842
+                    },
+                    {
+                        "Nombre": "Configuración",
+                        "ID": "Accesos_Configuracion",
+                        "Color": 2263842
+                    },
+                    {
+                        "Nombre": "Personal",
+                        "ID": "Accesos_Personal",
+                        "Color": 2263842
+                    },
+                    {
+                        "Nombre": "Partes Presencia",
+                        "ID": "Accesos_Partes",
+                        "Color": 2263842
+                    }
+                ]
+            }
+        ]
+    }
+]

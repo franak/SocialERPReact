@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social ERP Server</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+  <!-- Style -->
+  <link rel="stylesheet" href="//socialerp.net/comunidad/recursoscrmtg/clientes/estilosweb/telegestion.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+      line-height: 2rem;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    .dark-mode {
+      background-color: rgba(0, 0, 0, 0.823);
+      color: rgb(249, 247, 247);
+    }
+
+    .light-mode {
+      background-color: rgb(249, 247, 247);
+      color: rgba(0, 0, 0, 0.823);
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <!--#4Dinclude plantillas/barraLogos.html-->
+  <!-- <h3 id="DarkModetext">Dark Mode is OFF</h3> -->
+  <!-- <button onclick="darkMode()">Darkmode</button> -->
+  <!-- <button onclick="toggle()">-</button> -->
+
+  <!-- <div class="principal">
+    <h1> <B>CONTROL DE PRESENCIA</B></h1>
+    <p class="texto">
+      A continuación tecleé su número de empleado y pulse "FICHAR"
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <img src="/assets/img/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+      </div>-->
+  <div class="col-md-6 contents">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="mb-4 text-center">
+          <p class="dia" onclick="toggle()"></p>
+          <h2 class="hora"> </h2>
+        </div>
+        <!--
+  <form>
+
+    <div class="d-grid gap-2">
+      <input name="hora" type="text" class="form-control input-lg text-center" style="padding: .2rem;" autofocus>
+      <input type="submit" value='FICHAR' class="btn text-white btn-block btn-primary">
+    </div>
+  </form>
+
+  </div>
+  </div>
+
+  </div>
+-->
+
+        <div class="panel" style="display: none;">
+          <div class="panel-header text-center">
+            <i class="fa fa-globe" aria-hidden="true">&nbsp;</i>Servidor HTTP <span id="http-status"></span>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4"><b>Iniciado</b></div>
+              <div class="col-md-8" id="http-ini-date"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4"><b>Peticiones http</b></div>
+              <div class="col-md-8" id="http-rqt"></div>
+            </div>
+
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="col-md-4"><b>--</b></div>
+              <div class="col-md-8" id="otroshttp"></div>
+            </div>
+            <!-- 
+            <button class="btn btn-primary float-right" id="btnRestartWeb"><i class="fa fa-redo"
+                aria-hidden="true">&nbsp;</i>Restart HTTP Server</button>&nbsp; -->
+            <div class="row">
+              <div class="col-md-4">
+                <p>
+                  <!--#4DHTML dataJsonTitulo-->
+
+                </p>
+              </div>
+              <div class="col-md-8" id="from4Dvariable">
+                <pre><!--#4DTEXT datajson--></pre>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- <form action=" post" method="POST">
+            <div class="d-grid gap-2">
+
+              <div class="input-group flex-nowrap input-group-lg">
+                <span class="input-group-text" id="addon-wrapping">👨‍👧‍👧</span>
+                <input name="hora" type="text" class="form-control input-lg text-center" id="personalid">
+
+              </div>
+              <button type="button" id='entrada' onclick="buscarUUID(this)"
+                class="btn text-white btn-primary btn-lg">Buscar</button>
+
+            </div>
+          </form> -->
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript" src="//comunidad.socialerp.net/js/funciones.js"></script>
+
+
+  <script src="//comunidad.socialerp.net/serp/func/buttons.js"></script>
+  <script src="//comunidad.socialerp.net/ft/bk_find.js"></script>
+
+  <script src="assets/js/utils.js" crossorigin="anonymous"></script>
+
+  <script>
+
+    const dateLocalizacion = {
+      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+      abbreviatedDayNames: ["do", "lun", "mar", "mié", "jue", "vie", "sáb"],
+      shortestDayNames: ["do", "lu", "ma", "mi", "ju", "vi", "sá"],
+      firstLetterDayNames: ["d", "l", "m", "m", "j", "v", "s"],
+      /* Month Name Strings */
+      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+      abbreviatedMonthNames: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+    }
+    var tick = function () {
+      let elDate = new Date();
+      var clockFormat = elDate.toLocaleTimeString();
+      var cdateFormat = elDate.toLocaleDateString();
+      let cMes = dateLocalizacion.monthNames[elDate.getMonth()]
+      let dSemana = dateLocalizacion.dayNames[elDate.getDay()]
+      let dMes = elDate.getDate();
+      let dYear = elDate.getFullYear();
+      var cDateCompleto = `${dSemana} ${dMes} de ${cMes} de ${dYear}`
+      // console.log(clockFormat)
+      $('.hora').text(clockFormat)
+      $('.dia').text(cDateCompleto)
+    }
+    tick();
+
+
+  </script>
+
+
+  <script>
+    function darkMode() {
+      var element = document.body;
+      element.className = "dark-mode";
+    }
+    function lightMode() {
+      var element = document.body;
+      element.className = "light-mode";
+    }
+
+    function toggle() {
+      var element = document.body;
+      debugger
+      element.classList.toggle("dark-mode");
+      // $('#logoSaaS').css('filter', 'invert(1)')
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', event => {
+        if (event.matches) {
+          //dark mode
+          darkMode()
+        } else {
+          //light mode
+          lightMode()
+        }
+      })
+
+    document.addEventListener("DOMContentLoaded", () => {
+      ready()
+    });
+
+    const ready = () => {
+      getWebInfo()
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        darkMode()
+      } else {
+        lightMode()
+      }
+    }
+  </script>
+
+</body>
+
+</html>

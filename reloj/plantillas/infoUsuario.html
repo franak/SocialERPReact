@@ -1,0 +1,42 @@
+<li ng-hide="esMovil">
+	<div class="text-center">
+		<img ng-src="{{foto}}" alt="" class="img-responsive" />
+		<p><label class="btn btn-link" for="elegirFoto">Cambiar foto...</label>
+			<input id="elegirFoto" name="elegirFoto" style='visibility: hidden;' type="file"
+				file-dropzone="[image/png, image/jpeg, image/gif]" fileread="foto" data-max-file-size="3" />
+		</p>
+		<!-- <p><a href="#" class="btn btn-link"><small>Cambiar foto</small></a></p> -->
+	</div>
+	<p class="text-center small">
+	<p class="text-muted text-center"> {{vUsuario.NombreCompleto}}</p>
+	<div class="divider"></div>
+	<div class="text-center">
+		<button class="btn btn-group btn-warning btn-sm">Ver Perfil</button>
+		<button ng-click="cerrarSesion()" class="btn btn-group btn-dark btn-sm ">Cerrar Sesión</button>
+	</div>
+</li>
+
+<div class="card" style="width: 20rem;" ng-show="esMovil">
+	<!-- <img class="img-responsive profile-img margin-bottom-20" ng-src="{{vUsuario.Foto}}" file-dropzone="[image/png, image/jpeg, image/gif]"
+		file="vUsuario.Foto"  file-name="imageFileName" fileread="vUsuario.Foto" data-max-file-size="3" alt=""> -->
+
+
+	<img ng-src="{{foto}}" alt="" class="img-responsive" />
+	<center>
+		<p><label class="btn btn-link" for="elegirFoto">Cambiar foto...</label>
+			<input id="elegirFoto" name="elegirFoto" style='visibility: hidden;' type="file"
+				file-dropzone="[image/png, image/jpeg, image/gif]" file="image" file-name="imageFileName"
+				fileread="vUsuario.Foto" data-max-file-size="3" />
+		</p>
+
+		<!-- <p><a href="#" class="btn btn-link disabled text-muted"><small>Cambiar foto</small></a></p> -->
+
+	</center>
+	<div class="card-block">
+		<h4 class="card-title text-center" style="color: black">{{ vUsuario.NombreCompleto }}</h4>
+	</div>
+	<center>
+		<button id="verPerfil" class="btn btn-group btn-default btn-sm">Ver Perfil</button> |
+		<button ng-click="cerrarSesion()" class="btn btn-group btn-dark btn-sm">Cerrar Sesión</button>
+	</center>
+</div>

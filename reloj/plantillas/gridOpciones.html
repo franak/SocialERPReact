@@ -1,0 +1,15 @@
+<md-bottom-sheet class="md-grid" layout="column" style="">
+    <div ng-cloak>
+      <md-list flex layout="row" layout-align="center center">
+        <md-list-item ng-repeat="item in items">
+          <div>
+            <md-button id="boton-{{item.name}}" class="md-grid-item-content" ng-click="listItemClick($index)" ng-disabled=(item.deshabilitado)>
+                <i class="material-icons" style="font-size: 30px">{{ item.icon }}</i>
+              <div class="md-grid-text"> {{ item.name }} </div>
+            </md-button>
+            
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+  </md-bottom-sheet>

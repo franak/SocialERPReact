@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm start)",
+      "Read(//Users/fcaja/Projects/stitch_fichaje_digital_laboral 2/perfil_de_empleado/**)",
+      "Bash(npm run *)",
+      "Bash(sleep *)",
+      "Bash(curl *)",
+      "Bash(npm install)",
+      "Bash(timeout *)",
+      "Bash(true)",
+      "Bash(gtimeout *)",
+      "Bash(node *)",
+      "Bash(pkill *)"
+    ]
+  },
+  "$version": 3
+}

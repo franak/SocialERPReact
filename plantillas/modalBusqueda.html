@@ -1,0 +1,66 @@
+<md-dialog aria-label="Trabajadores" class="col-xs-12 col-md-4" style="padding:0">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools SERP_CabeceraImpresionCP">
+        <h2>Trabajadores</h2>
+        <span flex></span>
+        <md-button flex="20" style="min-width: 25px;" ng-click="cancel()">
+          <i class="material-icons" style=" font-size: 30px;">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div style="padding: 0 16px; max-height: 50px">
+        <label>Búsqueda:</label>
+        <md-input-container>
+          <input ng-model="filtroBusqueda.Descripcion">
+        </md-input-container>
+      </div>
+      <md-list flex layout="column" layout-align="center center" ng-show="$parent.nombreProceso == 'Control Presencia'">
+        <md-list-item ng-repeat="trabajador in $parent.arrayTrabajadores | filter:filtroBusqueda"
+          style="border-bottom: 1px solid #ddd;width: 150%" ng-click="seleccionar(this.trabajador)">
+          <div class="md-grid-text"> {{ trabajador.Descripcion }} </div>
+        </md-list-item>
+      </md-list>
+      <md-list flex layout="column" layout-align="center center" ng-show="$parent.nombreProceso == 'Configuracion'">
+        <md-list-item ng-repeat="localizacion in $parent.arrayLocalizaciones | filter:filtroBusqueda"
+          style="border-bottom: 1px solid #ddd;width: 150%" ng-click="seleccionar(this.localizacion)">
+          <div class="md-grid-text"> {{ localizacion.Descripcion }} </div>
+        </md-list-item>
+      </md-list>
+    </md-dialog-content>
+  </form>
+</md-dialog>
+
+
+
+<style>
+  .dialogdemoBasicUsage #popupContainer {
+    position: relative;
+  }
+
+  .dialogdemoBasicUsage .footer {
+    width: 100%;
+    text-align: center;
+    margin-left: 20px;
+  }
+
+  .dialogdemoBasicUsage .footer,
+  .dialogdemoBasicUsage .footer>code {
+    font-size: 0.8em;
+    margin-top: 50px;
+  }
+
+  .dialogdemoBasicUsage button {
+    width: 200px;
+  }
+
+  .dialogdemoBasicUsage div#status {
+    color: #c60008;
+  }
+
+  .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+    margin-bottom: 0;
+  }
+</style>

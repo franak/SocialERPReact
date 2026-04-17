@@ -1,0 +1,129 @@
+<!-- Header
+ ================================================== -->
+
+<div class="" id="main">
+  <!--
+  <div id="google_translate_element" style="float:left;"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'ca,en,eu,fr', layout: google.translate.TranslateElement.FloatPosition, autoDisplay: false}, 'google_translate_element');
+}
+</script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          -->
+
+
+
+</div>
+
+
+<div>
+
+
+
+  <!-- Subhead
+ ================================================== -->
+  <!--
+
+<blockquote>
+ <h4><?php echo $titulo ?></h4>
+         <!-- <small><?php echo $subtitulosup ?></small>-->
+
+
+  <div class="container">
+    <!--           <form action ="http://127.0.0.1:8082/test/?" name="bk_buscador" id="bk_buscador">-->
+    <form action="https://telegestion.socialerp.net/test/?" name="bk_buscador" id="bk_buscador">
+
+      <input name="q" id="termino" type="hidden" maxlength="100" placeholder="Buscar" results="0" spellcheck="false"
+        autofocus>
+      <input name="seccion" id="seccion" type="hidden" value="50-909222379AF64F18AC0C06B76F5DF1E3">
+
+
+    </form>
+    <div class="row-fluid">
+
+      <div class="span12" style="padding-right: 0px; max-width:750px;
+    padding-left: 0px;">
+
+
+
+        <div id="result" itemscope itemtype="http://schema.org/CreativeWork">
+          <p class="indicator"><img src="images/indicator2.gif"></p>
+        </div>
+
+      </div>
+
+
+
+      <!--    Sistema para tomar la variable de un Value de un campo y meter el resultado en un div
+      <input type="hidden" id="resultatoinput" value="<?php// echo $resultado; ?>" >
+			<script>
+		  var resultadobk=$('#resultatoinput').val(); //Me cojo el value que hay en resultadoinput
+		  $('.span14').html('<h2>'+resultadobk+'</h2>');  // cojo el resultado y lo pongo en un div
+          </script>
+
+-->
+    </div>
+  </div>
+
+
+
+</div> <!-- /container -->
+
+
+<!-- Footer ================================================== -->
+<footer class="navbar navbar-fixed">
+  <div class="container">
+    <!--<p class="muted"><em>Tags: <?php echo $tags;?></em></p>-->
+    <p style="margin-left:30px;"><a href="#"> <i class="icon-arrow-up"></i> Arriba</a></p>
+
+  </div>
+</footer>
+
+</div>
+
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+<script src="//comunidad.socialerp.net/js/jquery-2.1.1.min.js"></script>
+
+
+
+<script src="//comunidad.socialerp.net/bootstrap/js/bootstrap.js"></script>
+
+<script src="../../../static/js/WAK.js"></script>
+
+
+<script type="text/javascript" src="//comunidad.socialerp.net/js/funciones.js"></script>
+
+
+<script src="//comunidad.socialerp.net/serp/func/buttons.js"></script>
+<script src="//comunidad.socialerp.net/ft/bk_find.js"></script>
+
+
+<script type="text/javascript">
+
+
+  $(document).ready(function (e) {
+    $(document.body).fadeIn('slow');
+    //Ejecuto la búsqueda si en la url viene.
+    var q = getUrlVars()['q'];
+    let queryPath = document.location.pathname.split('/');
+    let querySe = queryPath[1]
+    if (querySe) {
+      getIp();
+    } else {
+      $('#result').load(url).fadeIn('slow');
+    }
+
+  });
+
+</script>
+
+
+
+</body>
+
+</html>

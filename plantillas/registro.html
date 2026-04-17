@@ -1,0 +1,354 @@
+<div class="card" layout="column" ng-cloak class="md-inline-form" ng-controller="registroController as regctrl">
+
+  <div class="card-header  text-center">
+    {{ctrl.tituloFormulario}}
+  </div>
+
+  <div ng-show="ctrl.altaCorrecta==3" id="resultado" layout="column" class="layout-padding layout-column" ng-cloak>
+    <div class="container">
+      <p class="text-center">
+        <i class="material-icons" style="font-size:10em;color:var(--red)">
+          pan_tool
+        </i>
+      </p>
+      <h2 class="text-center">Ha ocurrido un problema en el proceso de registro</h2>
+      <!-- <h4 class="text-center">Recibirá un correo electrónico en la cuenta que nos ha facilitado dónde le indicaremos
+        como activar su acceso.
+      </h4> -->
+
+      <!-- Miml80*2 -->
+
+      <p class="text-center">
+        <md-button id="Entrada" ng-click="regctrl.volverRegistro($event)" class="md-raised">
+          Volver al Formulario de Registro</md-button>
+      </p>
+
+      <p class="text-center">Inténtelo de nuevo más tarde o contacte con nuestro servicio de soporte técnico en <a
+          href="mailto:soporte@fichatujornada.es">soporte@fichatujornada.es</a>
+        <p class="text-right">Muchas gracias por confiar en <a href="https://fichatujornada.es">fichatujornada.es</a>
+        </p>
+    </div>
+  </div>
+
+  <div ng-show="ctrl.altaCorrecta==0" id="resultado" layout="column" class="layout-padding layout-column" ng-cloak>
+    <div class="container">
+      <p class="text-center">
+        <i class="material-icons" style="font-size:10em;color:var(--cyan)">
+          cloud_done
+        </i>
+      </p>
+      <h2 class="text-center">Su solicitud de alta en fichatujornada.es se ha realizado correctamente.</h2>
+      <h4 class="text-center">Recibirá un correo electrónico en la cuenta que nos ha facilitado dónde le indicaremos
+        como activar su acceso.
+      </h4>
+
+      <!-- <p class="text-center">
+        <md-button id="Entrada" ng-click="regctrl.accesoLogin($event)" class="md-raised">
+          Entrar</md-button>
+      </p> -->
+
+      <!-- Miml80*2 -->
+
+
+      <p class="text-center">Para cualquier consulta, no dude en contactar con nuestro servicio de soporte técnico en <a
+          href="mailto:soporte@fichatujornada.es">soporte@fichatujornada.es</a>
+        <p class="text-right">Muchas gracias por confiar en <a href="https://fichatujornada.es">fichatujornada.es</a>
+        </p>
+    </div>
+  </div>
+
+  <div ng-show="ctrl.altaCorrecta==4" id="resultado" layout="column" class="layout-padding layout-column" ng-cloak>
+    <div class="container">
+      <p class="text-center">
+        <i class="material-icons" style="font-size:10em;color:var(--{{regctrl.colorDone}})">
+          {{regctrl.IconDone}}
+          <!-- cloud_done -->
+        </i>
+      </p>
+      <h2 class="text-center">{{regctrl.tituloDone}}</h2>
+      <h4 class="text-center" ng-bind-html="regctrl.textoDone">
+      </h4>
+
+      <p class="text-center">
+        <md-button id="Entrada" ng-click="regctrl.accesoLogin($event)" class="md-raised">
+          Ir al formulario de acceso</md-button>
+      </p>
+
+      <!-- Miml80*2 -->
+
+
+      <p class="text-center">Para cualquier consulta, no dude en contactar con nuestro servicio de soporte técnico en <a
+          href="mailto:soporte@fichatujornada.es">soporte@fichatujornada.es</a>
+        <p class="text-right">Muchas gracias por confiar en <a href="https://fichatujornada.es">fichatujornada.es</a>
+        </p>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.altaCorrecta==1" id="formularioAlta" layout="column" class="layout-padding layout-column" ng-cloak>
+    <!-- <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" clas s="btn btn-primary">Go somewhere</a> -->
+
+    <div id="login-page">
+      <div class="container" flex-xs flex-gt-xs="50" layout="column" ng-if="seccion == 'login'">
+
+        <!-- <div layout="row" ng-show="cargando" layout-sm="column" layout-align="space-around" style="position: fixed;
+                            z-index: 99;
+                            top: 30%;left: 50%;">
+          <md-progress-circular md-mode="indeterminate" md-diameter="90"></md-progress-circular>
+        </div> -->
+
+
+
+        <!-- <md-content layout-padding>
+  <md-input-container class="md-block">
+    <md-checkbox name="tos" ng-model="project.isAuth" required>
+      Estoy autorizado
+    </md-checkbox>
+    <div ng-messages="projectForm.isAuth.$error" multiple md-auto-hide="false">
+      <div ng-message="required"> Tu dispositivo debe autorizarse antes de continuar</div>
+    </div>
+  </md-input-container>
+</md-content> -->
+
+
+
+        <md-content layout-padding>
+          <!-- <md-card>
+                            <md-card-content> -->
+          <!-- <p>Registro de nuevo usuario</p> -->
+
+          <form name="loginForm">
+
+            <div layout-gt-xs="row">
+              <md-input-container class=" md-block flex-gt-xs ">
+                <label>e-mail</label>
+                <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+                <input required id="cElec" name="cElec" ng-model="regctrl.datosFormulario.Correo">
+                <div ng-messages="loginForm.cElec.$error">
+                  <div ng-message="required">Este dato es obligatorio.</div>
+                </div>
+
+              </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+              <md-input-container class="md-block flex-gt-xs ">
+                <label>Contraseña</label>
+                <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+                <input type="password" id="ctsn" name="ctsn" ng-model="regctrl.datosFormulario.Contrasenha"
+                  autocomplete="new-password">
+                <div ng-messages="loginForm.ctsn.$error">
+                  <div ng-message="required">Este dato es obligatorio.</div>
+                </div>
+
+              </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+              <md-input-container class="md-block">
+                <md-button id="Entrada" ng-click="regctrl.entrarAlSit($event)" class="md-raised">
+                  Entrar</md-button>
+
+            </div>
+          </form>
+      </div>
+      <div class="container" flex-xs ng-if="seccion == 'registro_control_de_presencia' || !seccion">
+
+        <form name="authForm">
+
+          <div layout-gt-xs="row" class="layout-gt-xs-row">
+            <md-input-container class="md-block flex-gt-xs ">
+              <label>Empresa</label>
+              <!-- <md-icon md-font-library="material-icons">fingerprint</md-icon> -->
+              <input required name="empresa" ng-model="regctrl.datosFormulario.NombreEmpresa" autofocus>
+              <div ng-messages="authForm.empresa.$error">
+                <div ng-message="required">Este datos es obligatorio.</div>
+                <!-- <div ng-message="md-maxlength">The description must be less than 30 characters long. -->
+              </div>
+
+            </md-input-container>
+          </div>
+
+          <div layout-gt-xs="row" class="layout-gt-xs-row">
+            <md-input-container class="md-block flex-gt-xs ">
+              <label>Nombre</label>
+              <!-- md-icon-left -->
+              <!-- <md-icon md-font-library="material-icons">fingerprint</md-icon> -->
+              <input required name="nombre" ng-model="regctrl.datosFormulario.Nombre">
+              <div ng-messages="authForm.nombre.$error">
+                <div ng-message="required">Este datos es obligatorio.</div>
+                <!-- <div ng-message="md-maxlength">The description must be less than 30 characters long. -->
+              </div>
+              <!-- </md-card-content>
+                        </md-card> -->
+            </md-input-container>
+            <md-input-container class=" md-block flex-gt-xs ">
+              <label>Apellido 1</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required id="apellido1" name="apellido1" ng-model="regctrl.datosFormulario.Apellido1">
+              <div ng-messages="authForm.apellido1.$error">
+                <div ng-message="required">Este dato es obligatorio.</div>
+              </div>
+
+            </md-input-container>
+            <md-input-container class=" md-block flex-gt-xs ">
+              <label>Apellido 2</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input md-no-asterisk id="apellido2" name="apellido2" ng-model="regctrl.datosFormulario.Apellido2">
+              <!-- <div ng-messages="authForm.apellido2.$error">
+                <div ng-message="required">Este dato es obligatorio.</div>
+              </div> -->
+            </md-input-container>
+
+
+
+          </div>
+
+
+
+          <div layout-gt-xs="row" class="layout-gt-xs-row">
+
+            <md-input-container class=" md-block flex-gt-xs ">
+              <label>Actividad principal de la empresa</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required id="actividad" name="actividad" ng-model="regctrl.datosFormulario.Actividad">
+
+
+            </md-input-container>
+
+            <md-input-container class=" md-block flex-gt-xs ">
+              <label>¿Cómo nos ha conocido?</label>
+
+              <md-select required ng-model="regctrl.datosFormulario.OrigenComercial">
+                <md-option ng-repeat="origen in datosFormulario.OrigenComercial" value="{{origen.nombre}}">
+                  {{origen.nombre}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
+
+          </div>
+          <!-- First Row -->
+          <div layout-gt-xs="row" class="layout-gt-xs-row">
+            <md-input-container class=" md-block flex-gt-xs ">
+              <label>Teléfono</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required id="tlf" name="tlf" type="tel" ng-model="regctrl.datosFormulario.Telefono">
+              <div ng-messages="authForm.tlf.$error">
+                <div ng-message="required">Este dato es necesario.</div>
+              </div>
+
+            </md-input-container>
+            <md-input-container class="md-block flex-gt-xs ">
+              <label>e-mail</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required type="email" id="cElec" name="cElec" ng-model="regctrl.datosFormulario.Correo"
+                md-auto-hide="false">
+              <div ng-messages="authForm.cElec.$error">
+                <div ng-message="required">Este dato es obligatorio.</div>
+              </div>
+              <div ng-messages="authForm.cElec.$error">
+                <div ng-message="email">El email parece no ser correcto.</div>
+              </div>
+
+            </md-input-container>
+
+            <md-input-container class="md-block flex-gt-xs ">
+              <label>Elige una Contraseña</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required type="password" id="ctsn" name="ctsn" ng-model="regctrl.datosFormulario.Contrasenha"
+                equals="{{regctrl.datosFormulario.RepContrasenha}}" autocomplete="nueva-password">
+              <div ng-messages="authForm.ctsn.$error">
+                <div ng-message="required">Este dato es obligatorio.</div>
+              </div>
+
+            </md-input-container>
+
+            <md-input-container class="md-block flex-gt-xs ">
+              <label>Repite la Contraseña</label>
+              <!-- <md-icon md-font-library="material-icons">face</md-icon> -->
+              <input required type="password" id="repctsn" name="repctsn"
+                ng-model="regctrl.datosFormulario.RepContrasenha" equals="{{regctrl.datosFormulario.Contrasenha}}"
+                autocomplete="repetir-password">
+              <div ng-messages="authForm.repctsn.$error">
+                <div ng-message="required">Este dato es obligatorio.</div>
+              </div>
+              <div ng-messages="authForm.repctsn.$error">
+                <div ng-message="equals">No coincide la contraseña y su verificación</div>
+              </div>
+
+            </md-input-container>
+            <!-- Second row -->
+          </div>
+
+          <md-content layout-padding>
+            <div class="row">
+              <div class="col-md-6">
+                <md-input-container class="md-block">
+                  <!-- ng-click="regctrl.getDocumento('get_documento','Politica de Privacidad')">Condiciones de Uso</a> -->
+                  <md-checkbox name="aceptoClausula" ng-model="regctrl.datosFormulario.aceptoClausula" required>
+                    He leído y acepto las <a href="javascript:void(0)"
+                      ng-click="regctrl.getDocumento('get_documento','Declaración de Consentimiento',$event)">Condiciones
+                      de Uso</a> (LOPD)
+                  </md-checkbox>
+                  <div ng-messages="authForm.aceptoClausula.$error" multiple md-auto-hide="false">
+                    <div ng-message="required"> Debes aceptar la cláusula antes de continuar</div>
+                  </div>
+                </md-input-container>
+              </div>
+
+              <div class="col-md-3">
+                <md-input-container class="md-block">
+                  <div layout-gt-xs="row" class="layout-gt-xs-row">
+                    <span ng-show="authForm.$invalid && authForm.$error && authForm.$dirty"
+                      class="isInvalid ng-invalid">Algunos
+                      datos incorrectos a
+                      estan incompletos</span>
+                    <span ng-show="authForm.$valid" class="isValid ng-valid">¡Todo correcto!</span>
+
+                  </div>
+                </md-input-container>
+              </div>
+              <div class="col-md-3">
+                <md-input-container class="md-block">
+                  <md-button
+                    ng-disabled="authForm.empresa.$error.required||authForm.nombre.$error.required ||authForm.apellido1.$error.required ||authForm.actividad.$error.required ||authForm.tlf.$error.required ||authForm.cElec.$error.required && authForm.cElec.$invalid ||authForm.aceptoClausula.$error.required || authForm.repctsn.$error.equals || authForm.ctsn.$error.equals || authForm.ctsn.$error.required"
+                    id="Entrada" ng-click="regctrl.enviarFormularioAlta(this)" class="md-raised btn btn-block btn-lg">
+                    Darme de Alta</md-button>
+
+                  <!-- <md-button
+                          ng-disabled="authForm.empresa.$error.required||authForm.nombre.$error.required ||authForm.apellido1.$error.required ||authForm.apellido2.$error.required ||authForm.actividad.$error.required ||authForm.tlf.$error.required ||authForm.cElec.$error.required ||authForm.aceptoClausula.$error.required"
+                          id="Entrada" ng-click="regctrl.enviarFormularioAlta(this)" class="md-raised">
+                          Darme de Alta</md-button>-->
+
+
+
+                  <!-- ng-disabled="'projectForm.CodigoEmpleado ? true:false'"  -->
+                  <!-- <md-button ng-show="project.CodigoEmpleado.length>3" fade id="Salida"
+                          ng-click="regctrl.enviarDatos($event)" class="md-raised md-primary">
+                          Salida</md-button> -->
+                  <!-- <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+                                              <md-button class="md-raised md-warn">Warn</md-button>
+                                              <div class="label">Raised</div> -->
+
+              </div>
+              </md-input-container>
+              <div class="container">
+                <p class="md-body-1 text-right">
+                  Ya estoy registrado <md-button class="md-primary btn btn-lg" href="/static/page-login-2.html">Iniciar
+                    Sesión
+                  </md-button>
+                </p>
+              </div>
+            </div>
+      </div>
+
+      </md-content>
+
+
+
+
+      </form>
+      </md-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,383 @@
+/**
+ * RelojPage - "Architectural Precision" Aesthetic
+ * No borders, tonal shifting, asymmetric information density
+ */
+
+.reloj-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.reloj-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: var(--spacing-xl);
+  background-color: var(--surface);
+}
+
+.reloj-card {
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  max-width: 520px;
+  width: 100%;
+  /* No border, no shadow - tonal layering only */
+}
+
+/* ===== COMPANY HEADER ===== */
+
+.empresa-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  /* Separator via tonal shift, not border */
+  background: linear-gradient(180deg, transparent 0%, var(--surface-container) 100%);
+}
+
+.empresa-logo-wrapper {
+  background-color: var(--surface-container-lowest);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  min-width: 100px;
+}
+
+.empresa-logo {
+  max-width: 380px;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.empresa-name {
+  font-family: var(--font-display);
+  font-size: var(--title-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* ===== DIGITAL CLOCK ===== */
+
+.reloj-digital {
+  background-color: var(--surface-container-highest);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  /* No border - depth via tonal contrast */
+}
+
+.time-display {
+  font-family: var(--font-mono);
+  font-size: var(--display-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--spacing-sm);
+  /* Subtle gradient text effect */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.date-display {
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  color: var(--on-surface-variant);
+  text-transform: capitalize;
+  font-weight: var(--weight-medium);
+}
+
+/* ===== INSTRUCTION TEXT ===== */
+
+.instruction {
+  font-family: var(--font-body);
+  font-size: var(--label-md);
+  color: var(--on-surface-variant);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--weight-medium);
+}
+
+/* ===== OPTIONS SECTION ===== */
+
+.opciones-group {
+  background-color: var(--surface-container);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.opciones-title {
+  font-family: var(--font-body);
+  font-size: var(--label-sm);
+  color: var(--on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.opcion-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.opcion-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--outline-variant);
+  border-radius: 4px;
+  background-color: var(--surface-container-lowest);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.opcion-item input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.opcion-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--surface-container-lowest);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.opcion-item input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.opcion-label {
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  font-weight: var(--weight-medium);
+  user-select: none;
+}
+
+/* ===== INPUT FIELD ===== */
+
+.input-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.input-codigo {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--surface-container-highest);
+  border: none;
+  border-bottom: 2px solid var(--outline-variant);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  text-align: center;
+  transition: border-color var(--transition-base);
+}
+
+.input-codigo::placeholder {
+  color: var(--outline-variant);
+}
+
+.input-codigo:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+
+/* ===== ACTION BUTTONS ===== */
+
+.buttons-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.buttons-group--three {
+  grid-template-columns: 1fr 1fr;
+}
+
+.buttons-group--three .btn-ultimo {
+  grid-column: 1 / -1;
+}
+
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary Action - Clock In */
+.btn-entrada {
+  background: var(--gradient-primary);
+  color: var(--surface-container-lowest);
+}
+
+.btn-entrada:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-level-2);
+}
+
+.btn-entrada:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary Action - Clock Out */
+.btn-salida {
+  background-color: var(--color-error-container);
+  color: var(--color-error);
+}
+
+.btn-salida:hover:not(:disabled) {
+  background-color: var(--color-error);
+  color: var(--surface-container-lowest);
+}
+
+/* Tertiary Action - Last Report */
+.btn-ultimo {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.btn-ultimo:hover:not(:disabled) {
+  background-color: var(--surface-container-high);
+}
+
+/* ===== FOOTER ===== */
+
+.reloj-footer {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  color: var(--outline-variant);
+  font-size: var(--label-sm);
+  font-family: var(--font-body);
+}
+
+/* ===== LOADING STATE ===== */
+
+.reloj-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ===== EMPLEADO ACTIVO ===== */
+
+.empleado-activo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-primary-container);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.empleado-label {
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--color-on-primary-container);
+  opacity: 0.8;
+}
+
+.empleado-codigo {
+  font-family: var(--font-body);
+  font-size: var(--headline-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-on-primary-container);
+}
+
+/* ===== INFO PANEL ===== */
+
+.info-panel {
+  background-color: var(--surface-container);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.info-panel-title {
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-panel-content {
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  color: var(--on-surface);
+  line-height: 1.4;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 640px) {
+  .buttons-group {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .btn-ultimo {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .reloj-container {
+    padding: var(--spacing-md);
+  }
+  
+  .reloj-card {
+    padding: var(--spacing-xl);
+  }
+  
+  .time-display {
+    font-size: var(--headline-lg);
+  }
+}

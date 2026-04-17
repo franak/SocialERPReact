@@ -1,0 +1,12 @@
+
+<tr grid-item ng-click="abrirInput($index)" on-long-press="seleccionarParte($index)"
+id="parte{{$index}}">
+  <td ng-bind="item.Fecha | date:'dd/MM/yyyy'" style="text-align: left">
+  </td>
+  <td ng-bind=MostrarHoraSinRestar(item.Entrada)  style="text-align: left"></td>
+  <td ng-bind=MostrarHoraSinRestar(item.Salida) style="text-align: left"></td>
+  <td class="mdl-data-table__cell--non-numeric" style="text-align: left">
+    <span ng-bind="item.MostrarCuentaOperario"></span>
+  </td>
+</tr>
+

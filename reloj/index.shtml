@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+  <!-- Style -->
+  <link rel="stylesheet" href="//socialerp.net/comunidad/recursoscrmtg/clientes/estilosweb/telegestion.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+      line-height: 2rem;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .principal {
+      padding: 10px;
+      max-width: 700px;
+      margin: 20px auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 5px;
+      border: 1px solid #dedede;
+      background-color: white;
+    }
+
+    .barra {
+      background-color: var(--ColorCorporativo)
+    }
+
+    .btn-primary {
+      background-color: var(--ColorAceptado);
+    }
+
+    .dark-mode {
+      background-color: rgba(0, 0, 0, 0.823);
+      color: rgb(249, 247, 247);
+    }
+
+    .light-mode {
+      background-color: rgb(249, 247, 247);
+      color: rgba(0, 0, 0, 0.823);
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <!--#4Dinclude plantillas/barraLogos.html-->
+
+
+  <div class="principal">
+    <h1 id="nombreEmpresa"> <B>
+
+      </B></h1>
+    <h4>A continuación tecleé su código de empleado</h4>
+    <div class="texto">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img style="display:none;" id="logoEmp" loading="lazy" src="" alt="Image" class="img-fluid">
+          <img src="/assets/img/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <div class="mb-4 text-center">
+                <p class="dia"></p>
+                <h2 class="hora">
+                  <!--#4DTEXT vHora-->
+                </h2>
+
+              </div>
+              <div class="loader" id="loaderI" style="display:none;""></div>
+            <form action=" post" method="POST">
+                <div class="d-grid gap-2">
+
+                  <div class="input-group flex-nowrap input-group-lg">
+                    <span class="input-group-text" id="addon-wrapping">👨‍👧‍👧</span>
+                    <input name="hora" type="text" class="form-control input-lg text-center" id="personalid">
+
+                  </div>
+                  <button type="button" id='entrada' onclick="enviarDatos(this)"
+                    class="btn text-white btn-primary btn-lg">Entrada</button>
+                  <button type="button" id='salida' onclick="enviarDatos(this)"
+                    class="btn text-white btn-warning btn-lg">Salida</button>
+                  <button type="button" id='ultimo' onclick="enviarDatos(this)"
+                    class="btn text-white btn-secondary btn-lg">Último parte</button>
+                </div>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      </p>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <script src="https://comunidad.socialerp.net/commons/httpBasic.js"></script>
+
+
+    <script src="assets/js/reloj.js" crossorigin="anonymous"></script>
+    <script>
+
+      const dateLocalizacion = {
+        dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+        abbreviatedDayNames: ["do", "lun", "mar", "mié", "jue", "vie", "sáb"],
+        shortestDayNames: ["do", "lu", "ma", "mi", "ju", "vi", "sá"],
+        firstLetterDayNames: ["d", "l", "m", "m", "j", "v", "s"],
+        /* Month Name Strings */
+        monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+        abbreviatedMonthNames: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      }
+      var tick = function () {
+        var clock = Date.now();
+        let elDate = new Date();
+        var clockFormat = elDate.toLocaleTimeString();
+        var cdateFormat = elDate.toLocaleDateString();
+        let cMes = dateLocalizacion.monthNames[elDate.getMonth()]
+        let dSemana = dateLocalizacion.dayNames[elDate.getDay()]
+        let dMes = elDate.getDate();
+        let dYear = elDate.getFullYear();
+        var cDateCompleto = `${dSemana} ${dMes} de ${cMes} de ${dYear}`
+        // console.log(clockFormat)
+        $('.hora').text(clockFormat)
+        $('.dia').text(cDateCompleto)
+      }
+      tick();
+      // let elDate = new Date();
+
+      setInterval(() => {
+        tick()
+      }, 1000)
+
+
+    </script>
+
+
+    <script>
+      function darkMode() {
+        var element = document.body;
+        element.className = "dark-mode";
+      }
+      function lightMode() {
+        var element = document.body;
+        element.className = "light-mode";
+      }
+
+      function toggle() {
+        var element = document.body;
+        debugger
+        element.classList.toggle("dark-mode");
+        // $('#logoSaaS').css('filter', 'invert(1)')
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', event => {
+          if (event.matches) {
+            //dark mode
+            darkMode()
+          } else {
+            //light mode
+            lightMode()
+          }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

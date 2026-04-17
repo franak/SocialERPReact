@@ -1,0 +1,175 @@
+/**
+ * AppHeader - Shared header across sections
+ * Shows employee code, section name, login link, and dropdown menu
+ */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--surface-container);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ===== LEFT SIDE ===== */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header-home-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--on-surface);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+
+.header-home-btn:hover {
+  background-color: var(--surface-container-highest);
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-section-name {
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  font-weight: var(--weight-semibold);
+  color: var(--on-surface);
+}
+
+.header-employee-code {
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  color: var(--on-surface-variant);
+}
+
+.header-employee-code--large {
+  font-size: var(--body-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  background-color: var(--color-primary-container);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.code-label {
+  font-weight: var(--weight-medium);
+  opacity: 0.7;
+}
+
+/* ===== RIGHT SIDE ===== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header-login-btn {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.header-login-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* ===== DROPDOWN ===== */
+
+.header-dropdown-wrapper {
+  position: relative;
+}
+
+.header-menu-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--on-surface);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+
+.header-menu-btn:hover {
+  background-color: var(--surface-container-highest);
+}
+
+.header-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-xs);
+  background-color: var(--surface-container-low);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) 0;
+  min-width: 220px;
+  box-shadow: var(--shadow-level-3);
+  z-index: 200;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.dropdown-item:hover {
+  background-color: var(--surface-container);
+}
+
+.dropdown-item--danger {
+  color: var(--color-error);
+}
+
+.dropdown-item--danger:hover {
+  background-color: var(--color-error-container);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--outline-variant);
+  margin: var(--spacing-xs) 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .header-employee-code {
+    display: none;
+  }
+}

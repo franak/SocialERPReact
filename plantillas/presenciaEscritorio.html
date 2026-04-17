@@ -1,0 +1,9 @@
+<tr grid-item ng-dblclick="abrirInput($index)"  id="parte{{$index}}">
+    <td ng-bind="item.Fecha | date:'dd/MM/yyyy'" class="noselect" style="text-align: left">
+    </td>
+    <td ng-bind=MostrarHoraSinRestar(item.Entrada)  class="noselect" style="text-align: left"></td>
+    <td ng-bind=MostrarHoraSinRestar(item.Salida) class="noselect" style="text-align: left"></td>
+    <td class="mdl-data-table__cell--non-numeric"  style="text-align: left">
+      <span class="noselect" ng-bind="item.MostrarCuentaOperario"></span>
+    </td>
+  </tr>

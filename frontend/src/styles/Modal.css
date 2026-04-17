@@ -1,0 +1,179 @@
+/**
+ * Modal - "Architectural Precision" Aesthetic
+ * Glass overlay, tonal surfaces, ambient shadows
+ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(11, 15, 16, 0.4);
+  backdrop-filter: blur(var(--glass-blur));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background-color: var(--surface-container-lowest);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-floating);
+  max-width: 450px;
+  width: 90%;
+  animation: slideUp 0.3s ease-out;
+  overflow: hidden;
+}
+
+/* ===== MODAL HEADER ===== */
+
+.modal-header {
+  padding: var(--spacing-2xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tonal states instead of gradients */
+.modal-header.success {
+  background-color: var(--color-success-container);
+  color: var(--color-success);
+}
+
+.modal-header.error {
+  background-color: var(--color-error-container);
+  color: var(--color-error);
+}
+
+.modal-header.warning {
+  background-color: var(--color-warning-container);
+  color: var(--color-warning);
+}
+
+.modal-header.info {
+  background-color: var(--surface-container-high);
+  color: var(--color-primary);
+}
+
+.modal-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* ===== MODAL BODY ===== */
+
+.modal-body {
+  padding: var(--spacing-2xl);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  color: var(--on-surface);
+  line-height: 1.6;
+}
+
+/* ===== MODAL FOOTER ===== */
+
+.modal-footer {
+  padding: var(--spacing-lg) var(--spacing-2xl) var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.modal-btn {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: var(--gradient-primary);
+  color: var(--surface-container-lowest);
+  min-height: 48px;
+}
+
+.modal-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-level-2);
+}
+
+.modal-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== PROGRESS BAR ===== */
+
+.modal-progress {
+  width: 100%;
+  height: 4px;
+  background-color: var(--surface-container-high);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.modal-progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  width: 100%;
+  transform-origin: left;
+  animation: progressShrink linear forwards;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes progressShrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    margin: var(--spacing-lg);
+  }
+
+  .modal-header {
+    padding: var(--spacing-xl);
+  }
+
+  .modal-body {
+    padding: var(--spacing-xl);
+    font-size: var(--body-sm);
+  }
+
+  .modal-icon {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,11 @@
+<tr grid-item ng-click="abrirInput($index)" on-long-press="seleccionarPersonal($index)" id="personal{{$index}}">
+  <td class="mdl-data-table__cell--non-numeric">
+    <span ng-bind="item.Codigo"></span>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric" style="text-align: left">
+    <span ng-bind="item.Descripcion" ></span>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric" style="text-align: left">
+    <span ng-bind="item.MostrarNIF"></span>
+  </td>
+</tr>
