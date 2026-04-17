@@ -26,9 +26,11 @@ const clearSessionCookie = () => {
 const callExternalApi = async (apiUrl, endpoint, method = 'GET', data = null, extraConfig = {}, returnFullResponse = false, apiToken = '') => {
     try {
         const url = `${apiUrl}${endpoint}`;
-        const headers = {
-            'X-API-KEY': apiToken || 'aaabbbccc',
-        };
+        const headers = {};
+        
+        if (apiToken) {
+            headers['X-API-KEY'] = apiToken;
+        }
 
         if (sessionCookie) {
             headers['Cookie'] = sessionCookie;

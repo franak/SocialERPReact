@@ -39,8 +39,28 @@ const config = {
     // JWT
     jwtSecret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
 
-    // CORS
-    corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3001',
+    // CORS - Soporta múltiples orígenes (separados por comas o JSON)
+    corsOrigin: (() => {
+        const corsEnv = process.env.CORS_ORIGIN || 'http://localhost:3001';
+        
+        // Si comienza con '[', intenta parsear como JSON
+        if (corsEnv.trim().startsWith('[')) {
+            try {
+                return JSON.parse(corsEnv);
+            } catch (e) {
+                console.warn('CORS_ORIGIN JSON parse error:', e.message);
+                return corsEnv;
+            }
+        }
+        
+        // Si contiene comas, divide en array
+        if (corsEnv.includes(',')) {
+            return corsEnv.split(',').map(origin => origin.trim());
+        }
+        
+        // Si es un único origen, retórnalo como string
+        return corsEnv;
+    })(),
 };
 
 module.exports = config;
