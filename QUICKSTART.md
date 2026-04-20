@@ -153,3 +153,43 @@ Si quieres cambiar el API externo:
 ---
 
 ¡Listo! Ahora tienes el proyecto corriendo localmente.
+##Para Desarrollo (pruebas locales)
+# Terminal 1: Backend solo
+cd backend
+npm run dev
+
+# Terminal 2: Frontend solo  
+cd frontend
+npm start
+
+# Frontend accede a http://localhost:3001
+# Backend en http://localhost:3004
+# Las llamadas API van a http://localhost:3004/api
+
+##Puesta en marcha en desarrollo OK
+
+# Terminal 1: Compilar frontend
+cd frontend
+npm run build
+
+# Terminal 2: Backend serve ambos
+cd backend
+npm run dev
+
+# Abre http://localhost:3004 (todo desde el backend)
+
+##Para Producción (mismo servidor):
+# 1. Compilar el frontend en el backend
+cd frontend
+npm run build
+
+# Confirma que existe: backend/../frontend/build/
+
+# 2. Instalar dependencias del backend
+cd backend
+npm install
+
+# 3. Ejecutar backend en producción
+NODE_ENV=production npm start
+
+# ✓ Todo disponible en: http://tu-dominio.com (puerto 3004)
